@@ -1,0 +1,1049 @@
+:root {
+  --primary-color: #0b1a2a;
+  /* Deep Navy Blue (not black) */
+  --secondary-color: #1a3a5a;
+  /* Lighter Navy */
+  --text-color: #ffffff;
+  /* Pure White */
+  --accent-color: #00d4ff;
+  /* Bright Neon Blue for contrast */
+  --font-heading: "Poppins", sans-serif;
+  /* Best modern font */
+  --font-body: "Poppins", sans-serif;
+  --muted: #9fb3c8;
+  --card-bg: rgba(255,255,255,0.03);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #0b1a2a 0%, #1a3a5a 50%, #0d2147 100%);
+  background-attachment: fixed;
+  color: var(--text-color);
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  min-height: 100vh;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  z-index: 2000;
+  border-radius: 4px;
+}
+
+/* Top Bar */
+#top-bar {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, black, white);
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(43, 88, 118, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 15px 40px;
+  border-radius: 50px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile nav open state */
+.navbar.open .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(10, 25, 40, 0.95);
+  border-radius: 12px;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 420px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #a7c5eb;
+}
+
+/* Active nav link style (scrollspy) */
+.nav-links li a.active,
+.nav-links li a[aria-current="true"] {
+  background: var(--accent-color);
+  color: var(--primary-color) !important;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.nav-icon {
+  width: 20px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  /* Space for navbar */
+}
+
+.diagonal-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  overflow: hidden;
+}
+
+/* Stars Animation Context */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stars>div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  filter: drop-shadow(0 0 2px white);
+}
+
+/* We use the injected CSS variable --star-shadow for the box-shadow */
+.stars .small {
+  width: 1px;
+  height: 1px;
+  animation: starsAnimation 20s linear infinite;
+  box-shadow: var(--star-shadow);
+}
+
+.stars .small::after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  box-shadow: var(--star-shadow);
+}
+
+.stars .medium {
+  width: 2px;
+  height: 2px;
+  animation: starsAnimation 40s linear infinite;
+  box-shadow: var(--star-shadow);
+}
+
+.stars .medium::after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  box-shadow: var(--star-shadow);
+}
+
+.stars .big {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  animation: starsAnimation 60s linear infinite;
+  box-shadow: var(--star-shadow);
+}
+
+.stars .big::after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  box-shadow: var(--star-shadow);
+}
+
+@keyframes starsAnimation {
+  from {
+    transform: translateY(-2000px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Hero Content Layout */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+  flex-wrap: wrap;
+  /* Responsive wrap */
+  gap: 40px;
+}
+
+/* Hero CTAs and button styles (professional) */
+.hero-ctas {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-color);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(2,6,23,0.45);
+}
+
+.text-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.greeting {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #a7c5eb;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  /* More natural, solid heading color for a professional feel */
+  color: #f3f8fb;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+}
+
+#profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+#profile-pic:hover{
+  
+
+}
+
+.profile-wrapper {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 5px solid var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  /* This "cuts and crops" the content */
+  display: flex;
+  /* Removes bottom space */
+}
+
+.social-compact {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+}
+.social-compact a {
+  color: var(--muted);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.profile-wrapper {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.profile-wrapper:hover {
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* "cut the zoom" - Inner zoom effect */
+.profile-wrapper:hover #profile-pic {
+  transform: scale(1.15);
+}
+
+/* Image Modal Styles */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  animation: fadeIn 0.3s ease;
+}
+
+.image-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  animation: zoomIn 0.3s ease;
+  border-radius: 8px;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2001;
+}
+
+.image-modal-close:hover {
+  color: var(--accent-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    padding: 10px 16px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    font-size: 0.95rem;
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-bottom: 40px;
+    gap: 18px;
+  }
+
+  .text-content {
+    text-align: center;
+  }
+
+  .headline {
+    font-size: 1.9rem;
+  }
+
+  .profile-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+
+
+  .diagonal-hero-bg {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- New Section Styles --- */
+
+.section {
+  padding: 80px 20px;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  /* Above background */
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Glassmorphism Classes */
+.glass-section {
+  background: rgba(5, 23, 54, 0.85);
+  /* Deep Navy Glass - Visible & Premium */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 80px;
+
+}
+
+/* Sub-headline in Hero */
+.sub-headline {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.9;
+  /* Show tagline plainly instead of typewriter animation */
+  border-right: none;
+  white-space: normal;
+  overflow: visible;
+  width: auto;
+  animation: none;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--accent-color)
+  }
+}
+
+/* About Section */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  background: rgba(13, 30, 60, 0.95);
+  /* Deep solid navy for neatness */
+  padding: 50px;
+  border-radius: 0px;
+  /* Minimal radius as requested */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.about-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-color);
+}
+
+.about-text {
+  font-size: 1.15rem;
+  /* Slightly larger for readability */
+  line-height: 1.9;
+  color: #e9f1f8;
+  /* Off-white for comfort */
+  text-align: left;
+  max-width: 800px;
+  font-weight: 300;
+}
+
+.strengths-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.strength-card {
+  background: rgba(255, 255, 255, 0.05);
+  /* Lighter for visibility */
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s, background 0.3s;
+  /* Disabled float animation for a more professional static appearance */
+  animation: none;
+}
+
+/* Stagger floating for variety */
+.strength-card:nth-child(even) {
+  animation-delay: 1s;
+}
+
+.strength-card:nth-child(odd) {
+  animation-delay: 0s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Pause floating on hover so user can easily click/read, and avoid transform conflicts */
+.strength-card:hover {
+  animation-play-state: paused;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px var(--accent-color);
+  /* Changed to accent color for consistency */
+  transform: translateY(-5px);
+  /* This might still fight, but pausing usually helps. Better to just pause. */
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.skill-category {
+  background: rgba(10, 25, 50, 0.8);
+  /* Darker Navy for visibility */
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+  /* Disabled float animation for a more professional static appearance */
+  animation: none;
+  /* Apply uniform animation */
+}
+
+/* Stagger skill cards */
+.skill-category:nth-child(even) {
+  animation-delay: 1.5s;
+}
+
+.skill-category:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+.skill-category:hover {
+  animation-play-state: paused;
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  background: rgba(10, 25, 50, 1);
+  /* Max opacity on hover */
+}
+
+.skill-category h3 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a7c5eb;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 5px 12px;
+}
+
+/* Education Section - Timeline / Minimal Bar style */
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: transparent;
+  /* Clean look */
+  padding: 30px;
+  border-radius: 4px;
+  /* Reduced radius */
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Separator line instead of full card */
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.education-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.education-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.education-card:hover::after {
+  width: 100%;
+}
+
+.edu-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  opacity: 0.8;
+}
+
+.edu-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.institution {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 5px;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: left;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(2,6,23,0.6);
+  border-color: rgba(0,212,255,0.25);
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.project-card h3 {
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.project-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+/* Contact Section */
+.contact-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.contact-item {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: transparent;
+  border-radius: 4px;
+  /* Small radius */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--accent-color);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.contact-item:hover {
+  color: var(--primary-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+.contact-item:hover::before {
+  width: 100%;
+}
+
+/* Animation Utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Scroll Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Premium smooth ease */
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays for Reveals */
+.reveal.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal.delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* Staggered Children Animations */
+.reveal .skill-category,
+.reveal .contact-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* For skill-category, we only transition opacity/scale to avoid conflict with float animation? 
+   Actually, float uses transform. Introducing a transition on transform might conflict.
+   Let's target opacity for skill-category and maybe a different property or assume float starts after. 
+   To be safe, let's just do opacity for skill-category to keep the float working perfectly.
+*/
+.reveal .skill-category {
+  transform: none;
+  /* specific override to let float work? No, initial state needs to be hidden. */
+  /* If we hide it, we can't see float. */
+  /* Let's try just opacity for skills to be safe */
+  opacity: 0;
+}
+
+.reveal.active .skill-category {
+  opacity: 1;
+}
+
+.reveal.active .contact-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.active .skill-category:nth-child(1),
+.reveal.active .contact-item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.reveal.active .skill-category:nth-child(2),
+.reveal.active .contact-item:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.reveal.active .contact-item:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.reveal.active .contact-item:nth-child(4) {
+  transition-delay: 0.8s;
+}
+
+
+/* Immediate animations for Hero (No scroll trigger needed) */
+.animate-slide-down {
+  animation: slideDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.3s;
+}
+
+.stagger-3 {
+  animation-delay: 0.5s;
+}
+
+.stagger-4 {
+  animation-delay: 0.7s;
+}
+
+
+/* We will control the 'hidden' state via a specific class if needed, or just let them be visible.
+ To keep the animation but prevent "invisible content" issues:
+*/
+.reveal.pending {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure Navbar text is super visible */
+.navbar {
+  background-color: #101c2d;
+  /* Solid dark color instead of transparent glass for safety */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links li a {
+  color: #ffffff !important;
+  /* Force white */
+  font-weight: 700;
+}
+
+
+/* Responsive - Force Desktop Layout Stability */
+/* 
+   Since we added min-width: 1000px to body, the layout will NOT change/compress. 
+   We keep only essential overrides if any, but effectively we are enforcing desktop view.
+*/
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

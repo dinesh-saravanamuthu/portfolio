@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dinesh S | Portfolio</title>
+   <meta name="description" content="Portfolio of Dinesh S — Diploma graduate and CSE student. Web, programming, and projects.">
+   <meta name="theme-color" content="#0b1a2a">
+   <link rel="stylesheet" href="index.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <!-- Load only Poppins (limited weights) to reduce payload -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <a class="skip-link" href="#main">Skip to main content</a>
+   <div id="top-bar"></div>
+
+   <nav class="navbar" aria-label="Primary">
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+         <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul id="primary-navigation" class="nav-links">
+         <li><a href="#home"><i class="fa-solid fa-house nav-icon"></i> Home</a></li>
+         <li><a href="#about"><i class="fa-solid fa-user nav-icon"></i> About</a></li>
+         <li><a href="#skills"><i class="fa-solid fa-code nav-icon"></i> Skills</a></li>
+         <li><a href="#education"><i class="fa-solid fa-graduation-cap nav-icon"></i> Education</a></li>
+         <li><a href="#contact"><i class="fa-solid fa-envelope nav-icon"></i> Contact</a></li>
+      </ul>
+   </nav>
+
+   <main id="main">
+      <!-- Home / Hero Section -->
+      <header id="home" class="hero">
+         <div class="diagonal-hero-bg">
+            <div class="stars">
+               <!-- Javascript will inject star layers here -->
+            </div>
+         </div>
+
+         <div class="hero-content">
+            <div class="text-content">
+               <h2 class="greeting animate-fade-up stagger-1">Hi, I’m Dinesh S</h2>
+               <div class="animate-fade-up stagger-2">
+                  <h1 class="headline">Diploma Graduate • Computer Science Engineering • Aspiring Software Engineer</h1>
+               </div>
+               <p class="sub-headline stagger-3">“Learning every day. Building better every day.”</p>
+
+                  <div class="hero-ctas">
+                     <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+                     <a class="btn btn-secondary" href="#contact">Contact Me</a>
+                  </div>
+            </div>
+            <div class="image-container">
+               <div class="profile-wrapper" role="button" tabindex="0" aria-label="Click to view full profile image">
+                  <img id="profile-pic" src="./assets/Untitled design.png" alt="Dinesh S Profile Picture" loading="lazy">
+               </div>
+               <div class="social-compact" aria-hidden="false">
+                  <a href="https://www.linkedin.com/in/dinesh-s-718ba22a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                  <a href="https://github.com/dinesh-saravanamuthu" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+               </div>
+            </div>
+         </div>
+
+         <!-- Image Modal/Lightbox -->
+         <div id="image-modal" class="image-modal" role="dialog" aria-hidden="true">
+            <span class="image-modal-close">&times;</span>
+            <img class="image-modal-content" src="./assets/Untitled design.png" alt="Dinesh S Profile Picture - Full Size">
+         </div>
+         </div>
+      </header>
+      <!-- Projects section removed to keep page concise and professional -->
+
+      <!-- About Section -->
+      <section id="about" class="section glass-section reveal">
+         <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+               <p class="about-text">
+                  I am Dinesh S, currently pursuing Computer Science Engineering at SRM Easwari.
+                  I have completed my Diploma in Computer Engineering, which strengthened my basics in programming,
+                  logic building, and software development.
+                  <br><br>
+                  I enjoy designing websites, exploring new tools, and solving logical problems. I love understanding
+                  how technology works and how it can create useful solutions.
+                  <br><br>
+                  Outside academics, I enjoy watching & playing cricket and keeping up with current events and global
+                  developments.
+                  I am currently looking for opportunities where I can apply my skills, learn from real-world projects,
+                  and grow as a developer.
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section reveal">
+         <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+               <div class="skill-category">
+                  <h3><i class="fa-solid fa-code"></i> Technical Skills</h3>
+                  <div class="tags">
+                     <span class="tag">Java</span>
+                     <span class="tag">Python</span>
+                     <span class="tag">C</span>
+                     <span class="tag">HTML</span>
+                     <span class="tag">CSS</span>
+                     <span class="tag">JavaScript</span>
+                     <span class="tag">Git</span>
+                     <span class="tag">GitHub</span>
+                     <span class="tag">VS Code</span>
+                  </div>
+               </div>
+               <div class="skill-category">
+                  <h3><i class="fa-solid fa-brain"></i> Concepts</h3>
+                  <div class="tags">
+                     <span class="tag">OOP (Beginner)</span>
+                     <span class="tag">DBMS (Beginner)</span>
+                     <span class="tag">Data Structures</span>
+                     <span class="tag">Networking basics</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="section glass-section reveal">
+         <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+               <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+               <div class="edu-details">
+                  <h3>B.E. Computer Science Engineering</h3>
+                  <p class="institution">SRM Easwari Engineering College</p>
+               </div>
+            </div>
+            <div class="education-card">
+               <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+               <div class="edu-details">
+                  <h3>Diploma in Computer Engineering</h3>
+                  <p class="institution">PSB Polytechnic College</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <!-- Contact Section -->
+      <section id="contact" class="section glass-section reveal">
+         <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact-intro">Feel free to reach out!</p>
+            <div class="contact-links reveal">
+               <a href="mailto:dinesh.saravanmuthu@gmail.com" class="contact-item">
+                  <i class="fa-solid fa-envelope"></i> dinesh.saravanmuthu@gmail.com
+               </a>
+               <!-- Phone number removed as requested -->
+               <a href="https://www.linkedin.com/in/dinesh-s-718ba22a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="contact-item" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-linkedin"></i> LinkedIn
+               </a>
+               <a href="https://github.com/dinesh-saravanamuthu" class="contact-item" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github"></i> GitHub
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="footer highlight-text">
+      <p>&copy; 2026 Dinesh S. Built with <i class="fa-solid fa-heart" style="color: var(--accent-color);"></i> and
+         Code.</p>
+   </footer>
+
+   <script src="script.js"></script>
+</body>
+
+</html>
